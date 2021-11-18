@@ -1,10 +1,10 @@
 import React from 'react';
-import CuisineList from './CuisineList';
+import CuisineFilter from './CuisineFilter';
 import RecipeCard from './RecipeCard';
 import { useState, useEffect } from "react";
 
-function RecipeList() {
-    const [recipes, setRecipes] = useState([]);
+function RecipeList({ setRecipes, recipes }) {
+    const [selectedCuisine, setSelectedCuisine] = useState("All");
 
     useEffect(()=> {
         fetch('/recipes')
@@ -14,14 +14,18 @@ function RecipeList() {
         })
     },[])
 
+    const displayedRecipes = recipes.filter(
+        (recipe) => selectedCuisine === "All" || recipe.cuisine === selectedCuisine
+    );
+
 
     return (
         <div>
             <div class='sidebar'>
-                <CuisineList/>
+                <CuisineFilter setSelectedCuisine={setSelectedCuisine}/>
             </div>
             <div class='grid'>
-                {recipes.map((recipe) => {
+                {displayedRecipes.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe}/>
                 })}
             </div>
