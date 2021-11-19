@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    wrap_parameters false
     before_action :authorize
     skip_before_action :authorize, only: [:index, :show]
 
@@ -50,7 +51,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.permit(:name, :image, :description, :cuisine)
+    params.permit(:name, :image, :description, :cuisine, :user_id)
   end
 
   def render_not_found_response

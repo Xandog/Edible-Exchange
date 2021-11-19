@@ -4,52 +4,52 @@ function CuisineFilter({setSelectedCuisine}) {
 
     return (
         <div>
-            <div class="menu">
+            <div className="menu">
                 <button
                     onClick={() => setSelectedCuisine("All")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     All
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("American")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     American
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("British")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     British
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("Mexican")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     Mexican
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("Chinese")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     Chinese
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("Japanese")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     Japanese
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("Vietnamese")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     Vietnamese
                 </button>
                 <button
                     onClick={() => setSelectedCuisine("Italian")}
-                    class="menuitem"
+                    className="menuitem"
                     >
                     Italian
                 </button>

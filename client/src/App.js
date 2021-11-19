@@ -4,13 +4,15 @@ import RecipeList from './RecipeList';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import RecipeForm from './RecipeForm';
+import UserRecipeList from './UserRecipeList'
 import { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  const history = useHistory;
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
+  const history = useHistory();
 
   //Auto-login
   useEffect(() => {
@@ -26,26 +28,34 @@ function App() {
       <NavBar 
         user={user}
         setUser={setUser} 
+        history={history}
       />
       {user ? (
         <Switch>
+          <Route exact path="/my-recipes">
+          <UserRecipeList user={user}/>
+          </Route>
           <Route exact path="/new-recipe">
-            <RecipeForm recipes={recipes} setRecipes={setRecipes} history={history}/>
+            <RecipeForm user={user} history={history}/>
           </Route>
-          <Route exact path="/recipe/:id">
-            <RecipeDetail/>
+          {
+            selectedRecipe && (
+          <Route exact path={`/recipes/${selectedRecipe.id}`}>
+            <RecipeDetail recipe={selectedRecipe}/>
           </Route>
+          )
+          }
           <Route exact path="/">
-            <RecipeList/>
+            <RecipeList recipes={recipes} setRecipes={setRecipes} setSelectedRecipe={setSelectedRecipe}/>
           </Route>
         </Switch>
       ) : (
         <Switch>
           <Route exact path="/signup">
-            <SignupForm setUser={setUser}/>
+            <SignupForm setUser={setUser} history={history}/>
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser}/>
+            <LoginForm setUser={setUser} history={history}/>
           </Route>
           <Route exact path="/recipe/:id">
             <RecipeDetail/>

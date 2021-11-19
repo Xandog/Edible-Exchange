@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-function RecipeForm({ recipes, setRecipes, history }) {
+function RecipeForm({user, history}) {
     const [formData, setFormData] = useState ({
-        name: '',
-        image: '',
-        description: '',
-        cuisine: '',
+        name: "",
+        image: "",
+        description: "",
+        cuisine: "",
+        user_id: user.id,
     })
 
     function handleChange(e){
@@ -15,23 +16,25 @@ function RecipeForm({ recipes, setRecipes, history }) {
         })
     }
 
-    function handleSubmit(){
-
-        fetch('http://localhost:4000/forms', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(newForm =>{
-          setRecipes([
-            ...recipes, newForm
-          ])
-          history.push('/myforms')
-        })
-      }
+    // make the function async to enable the await keyword
+    async function handleSubmit(e) {
+    e.preventDefault();
+    debugger
+    // fetch returns a Promise, we must await it
+    const response = await fetch("/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    // response.json() returns a Promise, we must await it
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Recipe created:", data);
+      history.push('/')
+    } 
+  }
 
     return (
         <div className="new-user-form">

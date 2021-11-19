@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function LoginForm({setUser}) {
+function LoginForm({setUser, history}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,6 +16,7 @@ function LoginForm({setUser}) {
         }).then((r) => {
           if (r.ok) {
             r.json().then((user) => setUser(user));
+            history.push('/')
           }
         });
       }
