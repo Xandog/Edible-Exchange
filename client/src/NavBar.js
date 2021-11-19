@@ -12,14 +12,16 @@ function NavBar({user, setUser, history}) {
         });
     }
     return (
-        <header className="entire-navBar">
-            <div className="navBarBttn" id="homeBttn">
+        <header className="navBar">
+            <div className="homeBttn">
                 <Link to="/">Edible Exchange</Link>
             </div>
-            <div>
+            <img className="homeIcon" src="https://cdn.discordapp.com/attachments/247945650371559425/911225662084354088/1792595-middle.png"/>
+            <div id="navParent">
                 {user ? (
                     <>
-                        <button onClick={handleLogoutClick}>Logout</button>
+                        <p id="userGreeting">Hello, {user.username}!</p>
+                        <button className="navBarBttn" id="logoutBttn" onClick={handleLogoutClick}>Logout</button>
                         <Link className="navBarBttn" id="userRecipeBttn" to="/my-recipes">My Recipes</Link>
                         <Link className="navBarBttn" id="recipeBttn" to="/new-recipe">Create New Recipe!</Link>
                     </>

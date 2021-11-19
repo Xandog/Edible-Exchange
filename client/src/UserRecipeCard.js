@@ -16,12 +16,12 @@ function UserRecipeCard({recipe}) {
     }
     
     return (
-        <div>
-            <h2>{recipe.name}</h2>
-            <img src={recipe.image} style={{width: "300px"}} alt={recipe.name}/>
-            <h4>{recipe.cuisine}</h4>
-            <p>{recipe.description}</p>
-            <button onClick={handleClick}>Delete</button>
+        <div className="userRecipeCard">
+            <h2 className="recipeName">{recipe.name}</h2>
+            <img className="recipeImg" src={recipe.image} style={{width: "300px"}} alt={recipe.name}/>
+            <h4 className="cuisineType">{recipe.cuisine}</h4>
+            <p className="recipeDesc">{recipe.description}</p>
+            <button className="deleteBttn" onClick={handleClick}>Delete</button>
         </div>
     )
 }

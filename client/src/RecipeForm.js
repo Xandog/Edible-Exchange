@@ -37,7 +37,7 @@ function RecipeForm({user, history}) {
   }
 
     return (
-        <div className="new-user-form">
+        <div className="form">
             <h2>Create New Recipe!</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
