@@ -20,7 +20,11 @@ function NavBar({user, setUser, history}) {
             <div id="navParent">
                 {user ? (
                     <>
-                        <p id="userGreeting">Hello, {user.username}!</p>
+                        { user.username.length <= 9 ? 
+                        <p id="userGreeting">Hello, {user.username}!</p> 
+                        :
+                        <p id="smallerGreeting">Hello, {user.username}!</p>
+                        }
                         <button className="navBarBttn" id="logoutBttn" onClick={handleLogoutClick}>Logout</button>
                         <Link className="navBarBttn" id="userRecipeBttn" to="/my-recipes">My Recipes</Link>
                         <Link className="navBarBttn" id="recipeBttn" to="/new-recipe">Create New Recipe!</Link>

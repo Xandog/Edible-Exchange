@@ -79,12 +79,25 @@ a#userRecipeBttn{
   top: 10%;
 }
 
+/* for when the username is = 9 or bellow 9 characters */
 #userGreeting{
   position: absolute;
   left: 78%;
   top: 9%;
 
   font-size: 25px;
+  font-family: 'Lobster', cursive;
+  font-weight: 900;
+  color: red;
+}
+
+/* for when the username length exceeds 9 characters */
+#smallerGreeting{
+  position: absolute;
+  left: 74%;
+  top: 9%;
+
+  font-size: 22px;
   font-family: 'Lobster', cursive;
   font-weight: 900;
   color: red;

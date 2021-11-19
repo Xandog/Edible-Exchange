@@ -53,6 +53,7 @@ function RecipeForm({user, afterCreateRecipe}) {
                 <label htmlFor="cuisine">Cuisine Type:</label>
                 <br/>
                 <select name="cuisine" onChange={handleChange}>
+                    <option value="Select">--Select-Category--</option>
                     <option value="American">American</option>
                     <option value="British">British</option>
                     <option value="Mexican">Mexican</option>
