@@ -23,6 +23,15 @@ function App() {
       });
     }, []);
 
+    function afterCreateRecipe(){
+      fetch("/me").then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setUser(user));
+            history.push('/')
+          }
+      });
+  }
+
   return (
     <div className="App">
       <NavBar 
@@ -33,10 +42,10 @@ function App() {
       {user ? (
         <Switch>
           <Route exact path="/my-recipes">
-          <UserRecipeList user={user}/>
+          <UserRecipeList user={user} setUser={setUser}/>
           </Route>
           <Route exact path="/new-recipe">
-            <RecipeForm user={user} history={history}/>
+            <RecipeForm user={user} setUser={setUser} afterCreateRecipe={afterCreateRecipe}/>
           </Route>
           {
             selectedRecipe && (

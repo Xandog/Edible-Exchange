@@ -9,7 +9,7 @@ function RecipeList({ recipes, setRecipes, setSelectedRecipe }) {
         fetch("/recipes")
           .then((r) => r.json())
           .then(setRecipes);
-      }, [setRecipes]);
+    }, [setRecipes]);
     
     const displayedRecipes = recipes.filter(
         (recipe) => selectedCuisine === "All" || recipe.cuisine === selectedCuisine

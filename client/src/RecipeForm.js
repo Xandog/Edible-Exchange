@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function RecipeForm({user, history}) {
+function RecipeForm({user, afterCreateRecipe}) {
     const [formData, setFormData] = useState ({
         name: "",
         image: "",
@@ -32,7 +32,7 @@ function RecipeForm({user, history}) {
     const data = await response.json();
     if (response.ok) {
       console.log("Recipe created:", data);
-      history.push('/')
+      afterCreateRecipe();
     } 
   }
 

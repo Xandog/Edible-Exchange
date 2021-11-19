@@ -1,19 +1,20 @@
 import React from 'react'
 
-function UserRecipeCard({recipe}) {
-    //Deletes a recipe
-    function handleClick() {
-        fetch(`/recipes/${recipe.id}`, {
-            method: "DELETE" 
-        })
-        .then((r) => {
-          if (r.ok) {
-            console.log(r)
-          } else {
-            console.log(r)
-          }
-        });
-    }
+function UserRecipeCard({recipe, afterDelete}) {
+  //Deletes a recipe
+  function handleClick() {
+    fetch(`/recipes/${recipe.id}`, {
+      method: "DELETE" 
+    })
+    .then((r) => {
+      if (r.ok) {
+        console.log(r)
+        afterDelete();
+      } else {
+        console.log(r)
+      }
+    });
+  }
     
     return (
         <div className="userRecipeCard">
