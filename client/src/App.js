@@ -40,6 +40,7 @@ function App() {
         history={history}
       />
       {user ? (
+        // this will be available when the user is logged in
         <Switch>
           <Route exact path="/my-recipes">
           <UserRecipeList user={user} setUser={setUser}/>
@@ -59,6 +60,7 @@ function App() {
           </Route>
         </Switch>
       ) : (
+        // this will be available when the user is not logged in
         <Switch>
           <Route exact path="/signup">
             <SignupForm setUser={setUser} history={history}/>
@@ -66,11 +68,15 @@ function App() {
           <Route exact path="/login">
             <LoginForm setUser={setUser} history={history}/>
           </Route>
-          <Route exact path="/recipe/:id">
-            <RecipeDetail/>
+          {
+            selectedRecipe && (
+          <Route exact path={`/recipes/${selectedRecipe.id}`}>
+            <RecipeDetail recipe={selectedRecipe}/>
           </Route>
+          )
+          }
           <Route exact path="/">
-            <RecipeList setRecipes={setRecipes} recipes={recipes}/>
+            <RecipeList setRecipes={setRecipes} recipes={recipes} setSelectedRecipe={setSelectedRecipe}/>
           </Route>
         </Switch>
       )}
