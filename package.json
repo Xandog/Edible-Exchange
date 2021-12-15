@@ -11,6 +11,10 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-balloon": "^31.0.0",
+    "@ckeditor/ckeditor5-build-balloon-block": "^31.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "medium-editor": "^5.23.3",
     "react-router-dom": "^6.0.2"
   }
 }

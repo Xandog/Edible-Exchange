@@ -11,7 +11,6 @@ import { Switch, Route, useHistory } from "react-router-dom";
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null)
   const history = useHistory();
 
   //Auto-login
@@ -48,15 +47,11 @@ function App() {
           <Route exact path="/new-recipe">
             <RecipeForm user={user} setUser={setUser} afterCreateRecipe={afterCreateRecipe}/>
           </Route>
-          {
-            selectedRecipe && (
-          <Route exact path={`/recipes/${selectedRecipe.id}`}>
-            <RecipeDetail recipe={selectedRecipe}/>
+          <Route exact path="/recipes/:id">
+            <RecipeDetail />
           </Route>
-          )
-          }
           <Route exact path="/">
-            <RecipeList recipes={recipes} setRecipes={setRecipes} setSelectedRecipe={setSelectedRecipe}/>
+            <RecipeList recipes={recipes} setRecipes={setRecipes} />
           </Route>
         </Switch>
       ) : (
@@ -68,15 +63,11 @@ function App() {
           <Route exact path="/login">
             <LoginForm setUser={setUser} history={history}/>
           </Route>
-          {
-            selectedRecipe && (
-          <Route exact path={`/recipes/${selectedRecipe.id}`}>
-            <RecipeDetail recipe={selectedRecipe}/>
+          <Route exact path="/recipes/:id">
+            <RecipeDetail />
           </Route>
-          )
-          }
           <Route exact path="/">
-            <RecipeList setRecipes={setRecipes} recipes={recipes} setSelectedRecipe={setSelectedRecipe}/>
+            <RecipeList setRecipes={setRecipes} recipes={recipes} />
           </Route>
         </Switch>
       )}

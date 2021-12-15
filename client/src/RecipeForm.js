@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 function RecipeForm({user, afterCreateRecipe}) {
+    const [testData, setTestData] = useState();
     const [formData, setFormData] = useState ({
         name: "",
         image: "",
@@ -14,6 +15,10 @@ function RecipeForm({user, afterCreateRecipe}) {
             ...formData,
             [e.target.name]: e.target.value
         })
+    }
+
+    function anotherChange(e, editor) {
+        setTestData(editor.getData());
     }
 
     // make the function async to enable the await keyword
@@ -79,6 +84,7 @@ function RecipeForm({user, afterCreateRecipe}) {
                     name="description"
                     type="text"
                     id="recipeDescription"
+                    className="editable"
                     value={formData.description}
                     onChange={handleChange} 
                     rows={5} 
