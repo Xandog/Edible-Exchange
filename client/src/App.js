@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/new-recipe">
             <RecipeForm user={user} setUser={setUser} afterCreateRecipe={afterCreateRecipe}/>
           </Route>
-          <Route exact path="/recipes/:id">
+          <Route exact path="/recipe-list/:id">
             <RecipeDetail />
           </Route>
           <Route exact path="/">
@@ -63,7 +63,7 @@ function App() {
           <Route exact path="/login">
             <LoginForm setUser={setUser} history={history}/>
           </Route>
-          <Route exact path="/recipes/:id">
+          <Route exact path="/recipe-list/:id">
             <RecipeDetail />
           </Route>
           <Route exact path="/">
